@@ -41,6 +41,20 @@ public class Ball : KinematicBody2D
 		//Make the ball move and bounce
 		var collision = MoveAndCollide(Velocity * speed * delta);
 		if (collision != null){
+			Random rand = new Random();
+			var soundPicker = rand.Next(0,4);
+			if (soundPicker == 3){
+				GetNode<AudioStreamPlayer2D>("d5").Play();
+			}
+			else if (soundPicker == 2){
+				GetNode<AudioStreamPlayer2D>("e3").Play();
+			}
+			else if (soundPicker == 1){
+				GetNode<AudioStreamPlayer2D>("e4").Play();
+			}
+			else {
+				GetNode<AudioStreamPlayer2D>("f4").Play();
+			}
 			Velocity = Velocity.Bounce(collision.Normal);
 		}
 
